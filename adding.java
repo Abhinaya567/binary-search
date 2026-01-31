@@ -1,14 +1,30 @@
-import java.util.Scanner;
-public class adding{
-public static void main (String[] args){
-Scanner sc = new Scanner(System.in);
-System.out.println("enter the first number");
-int a = sc.nextInt();
-System.out.println("enter the second number");
-int b = sc.nextInt();
-int dig1 = (a%100)/10;
-int dig2 = (b%100)/10;
-int sum = dig1+dig2;
-System.out.println("adding of last two digits of given numbers" + sum );
-}
+class BinarySearch {
+    static int binarySearch(int arr[], int key) {
+        int low = 0;
+        int high = arr.length - 1;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+
+            if (arr[mid] == key)
+                return mid;          // element found
+            else if (arr[mid] < key)
+                low = mid + 1;       // search right half
+            else
+                high = mid - 1;      // search left half
+        }
+        return -1;                   // element not found
+    }
+
+    public static void main(String[] args) {
+        int arr[] = {10, 20, 30, 40, 50, 60};
+        int key = 40;
+
+        int result = binarySearch(arr, key);
+
+        if (result != -1)
+            System.out.println("Element found at index: " + result);
+        else
+            System.out.println("Element not found");
+    }
 }
